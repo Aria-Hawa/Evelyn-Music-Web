@@ -41,27 +41,25 @@ section {
         position: absolute;
         bottom: 0;
         left: 35%;
-        width: 30%;
+        width: 36%;
         padding: 10px;
         font-size: map-get($font-size, m);
         border-radius: 5px;
         color: map-get($recordColor, lightgray);
         word-wrap: break-word;
         display: none;
+        transition: color .3s ease;
 
         span {
-            font-size: map-get($font-size, xl);
+            font-size: 1.5rem;
         }
 
         small {
-            font-size: map-get($font-size, l);
+            font-size: 1rem;
         }
 
-        #freeDownload {
-            color: map-get($recordColor, lightgray);
-            font-size: map-get($font-size, s);
-            border-radius: 5px;
-            word-wrap: break-word;
+        &:hover {
+            color: map-get($recordColor, secondary4);
         }
     }
 
@@ -90,7 +88,7 @@ section {
 
 
 #center {
-    transition: 2s 0.8s all ease-in-out;
+    transition: 2s 1.5s all ease-in-out;
     transform: rotate(0deg) translate3d(0%, 0%, 0);
 }
 
@@ -150,21 +148,27 @@ figure {
                 position: absolute;
                 z-index: 9;
                 width: fit-content;
-                height: 74%;
+                // height: 74%;
+                height: 86%;
                 top: calc(0% + 13%);
                 right: 5%;
                 transform-origin: 98% 98%;
                 transform: rotate(7deg);
-                transition: .8s all ease-in-out;
+                transition: .8s transform ease, 1.2s height ease .8s;
 
                 &:hover {
                     cursor: pointer;
-                    height: 86%;
+                    // height: 86%;
                 }
 
-                // &.beclick {
-                //     transform: rotate(-6deg);
-                // }
+                &.beClick {
+                    height: 74%;
+                    transform: rotate(0deg);
+                }
+
+                &.pause {
+                    height: 86%;
+                }
 
             }
 
@@ -258,7 +262,7 @@ figure {
             width: 100%;
             height: 100%;
             position: relative;
-            transition: .6s all ease-in-out;
+            transition: .6s rotate ease-in-out;
 
             >img {
                 position: absolute;
@@ -278,20 +282,22 @@ figure {
                 aspect-ratio: 1/1;
                 top: 0;
                 left: 10px;
-                transition: 1s all ease-in-out;
+                transition: 1s rotate ease-in-out, 1s left ease-in-out;
 
                 &:hover {
                     cursor: grab;
                 }
 
+                &:active {
+                    cursor: grabbing;
+                }
+                
                 .background {
                     position: absolute;
                     width: 100%;
                     height: 100%;
-                    // -webkit-user-drag: none;
-                    /* 適用於 Webkit 瀏覽器 */
-                    pointer-events: none;
                     /* 讓滑鼠事件穿透到父元素 */
+                    pointer-events: none;
                 }
 
                 .recordRotate {
@@ -299,15 +305,10 @@ figure {
                     width: 100%;
                     height: 100%;
                     rotate: 90deg;
-                    // -webkit-user-drag: none;
-                    /* 適用於 Webkit 瀏覽器 */
-                    pointer-events: none;
                     /* 讓滑鼠事件穿透到父元素 */
+                    pointer-events: none;
                 }
 
-                &:active {
-                    cursor: grabbing;
-                }
             }
 
             &:hover {
@@ -324,7 +325,6 @@ figure {
             .albumBasic {
                 top: 0;
                 right: calc(0% + 122px);
-                -webkit-user-drag: none;
                 pointer-events: none;
             }
         }
@@ -334,7 +334,7 @@ figure {
 }
 
 #droppable {
-    .draggable {
+    .insideDroppable {
         width: 100%;
         height: 100%;
 
@@ -342,6 +342,18 @@ figure {
             position: absolute;
             transform: scale(0.95);
         }
+    }
+
+    .aboutRecord.insideDroppable {
+        display: none;
+    }
+
+    .worksRecord.insideDroppable {
+        display: none;
+    }
+
+    .contactRecord.insideDroppable {
+        display: none;
     }
 }
 
@@ -783,8 +795,12 @@ figure {
 }
 
 @keyframes pinReturn {
+    from {
+        transform: rotate(-25deg);
+    }
+
     to {
-        transform: rotate(8deg);
+        transform: rotate(7deg);
     }
 }
 
