@@ -682,14 +682,6 @@ figure #vinyl #round #droppable img {
     transform: rotate(-25deg);
   }
 }
-@keyframes pinReturn {
-  from {
-    transform: rotate(-25deg);
-  }
-  to {
-    transform: rotate(7deg);
-  }
-}
 @keyframes fadeOutTopLeft {
   0% {
     opacity: 1;
