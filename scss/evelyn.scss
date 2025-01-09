@@ -64,24 +64,25 @@ section {
     }
 
     #audioLicense2 {
-        color: map-get($recordColor, lightgray);
         position: absolute;
-        left: 16%;
-        top: 18%;
-        width: 28%;
+        left: 1%;
+        top: 15%;
+        width: 36%;
+        color: map-get($recordColor, lightgray);
         word-wrap: break-word;
         display: none;
+        transition: color .3s ease;
 
         span {
-            font-size: map-get($font-size, xl);
+            font-size: 1.5rem;
         }
 
         small {
-            font-size: map-get($font-size, l);
+            font-size: 1rem;
         }
 
-        a {
-            font-size: map-get($font-size, s);
+        &:hover {
+            color: map-get($recordColor, secondary4);
         }
     }
 }
@@ -291,7 +292,7 @@ figure {
                 &:active {
                     cursor: grabbing;
                 }
-                
+
                 .background {
                     position: absolute;
                     width: 100%;
@@ -358,7 +359,7 @@ figure {
 }
 
 #content {
-    width: 55%;
+    width: 65%;
     height: 100vh;
     background-color: $black-a3;
     position: absolute;
@@ -440,126 +441,127 @@ figure {
                     }
                 }
             }
-
-            .experiencePoint {
-                display: flex;
-                font-size: 1rem;
-                font-weight: 400;
-                width: 100%;
-                height: fit-content;
-                display: none;
-                color: map-get($recordColor, secondary3);
-
-                p {
-                    width: 94%;
-                    padding-left: 60px;
-                }
-
-                small {
-                    margin: 0 $interval-xl 0 $interval-l;
-                }
-
-                &.beclick {
-                    display: flex;
-                }
-            }
-        }
-    }
-
-    #works {
-        .title {
-            padding-left: 5%;
         }
 
-        .card {
-            width: 100%;
-
-            .worksItem {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                width: 90%;
-                padding: 10px;
-                border: 1px solid #ededed;
-                border-radius: 10px;
-                margin: 0 auto;
-                margin-bottom: 20px;
-                transition: .4s all ease-in-out;
-
-                &:hover {
-                    cursor: pointer;
-                    transform: scale(1.05);
-                }
-            }
-
-            article {
-                width: 68%;
-
-                h3 {
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: end;
-
-                    small {
-                        font-size: 18px;
-                    }
-                }
-
-                p {
-                    font-weight: 400;
-                }
-            }
-
-            img {
-                width: 22%;
-                height: fit-content;
-                object-fit: contain;
-                border-radius: 7px;
-            }
-
-        }
-    }
-
-
-    #contact {
-        left: 6%;
-
-        .card {
+        .experiencePoint {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            font-size: 1rem;
+            font-weight: 400;
+            width: 100%;
+            height: fit-content;
+            display: none;
+            color: map-get($recordColor, secondary3);
 
-            >div {
-                padding: $interval-xl;
+            p {
+                width: 94%;
+                padding-left: 60px;
+            }
 
-                h3 {
-                    margin-bottom: $interval-l;
-                }
-
-                p {
-                    font-size: 18px;
-                    font-weight: bolder;
-                    display: flex;
-                }
-
-                a {
-                    display: flex;
-                    align-items: center;
-                    font-size: 16px;
-                    font-weight: 400;
-                    margin-bottom: $interval-xl;
-                }
+            small {
+                margin: 0 $interval-xl 0 $interval-l;
             }
         }
-    }
-
-    #about.inner,
-    #works.inner,
-    #contact.inner {
-        display: none;
     }
 }
+
+#works {
+    .title {
+        padding-left: 5%;
+    }
+
+    .card {
+        width: 100%;
+
+        .worksItem {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ededed;
+            border-radius: 10px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            transition: .4s all ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.05);
+            }
+        }
+
+        article {
+            width: 68%;
+
+            h3 {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: end;
+
+                small {
+                    font-size: 18px;
+                }
+            }
+
+            p {
+                font-weight: 400;
+            }
+        }
+
+        img {
+            width: 22%;
+            height: fit-content;
+            object-fit: contain;
+            border-radius: 7px;
+        }
+
+    }
+}
+
+
+#contact {
+    left: 6%;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        >div {
+            padding: $interval-xl;
+
+            h3 {
+                margin-bottom: $interval-l;
+            }
+
+            p {
+                font-size: 18px;
+                font-weight: bolder;
+                display: flex;
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+                font-weight: 400;
+                margin-bottom: $interval-xl;
+
+                &:hover {
+                    color: map-get($recordColor, secondary4);
+                }
+            }
+        }
+    }
+}
+
+#about.inner,
+#works.inner,
+#contact.inner {
+    display: none;
+}
+
 
 
 // 高1024以下且寬1279以下的(這樣才不會影響到我1280*600的筆電)
@@ -793,16 +795,6 @@ figure {
         transform: rotate(-25deg);
     }
 }
-
-// @keyframes pinReturn {
-//     from {
-//         transform: rotate(-25deg);
-//     }
-
-//     to {
-//         transform: rotate(7deg);
-//     }
-// }
 
 @keyframes fadeOutTopLeft {
     0% {

@@ -103,22 +103,23 @@ section #audioLicense:hover {
   color: #FFE0A2;
 }
 section #audioLicense2 {
-  color: #EDEDED;
   position: absolute;
-  left: 16%;
-  top: 18%;
-  width: 28%;
+  left: 1%;
+  top: 15%;
+  width: 36%;
+  color: #EDEDED;
   word-wrap: break-word;
   display: none;
+  transition: color 0.3s ease;
 }
 section #audioLicense2 span {
-  font-size: 2rem;
-}
-section #audioLicense2 small {
   font-size: 1.5rem;
 }
-section #audioLicense2 a {
-  font-size: 0.8rem;
+section #audioLicense2 small {
+  font-size: 1rem;
+}
+section #audioLicense2:hover {
+  color: #FFE0A2;
 }
 
 #center {
@@ -337,7 +338,7 @@ figure #vinyl #round #droppable img {
 }
 
 #content {
-  width: 55%;
+  width: 65%;
   height: 100vh;
   background-color: rgba(17, 17, 17, 0.3);
   position: absolute;
@@ -409,7 +410,7 @@ figure #vinyl #round #droppable img {
 #content .inner .card h4:hover small {
   transform: rotate(-90deg);
 }
-#content .inner .card .experiencePoint {
+#content .inner .experiencePoint {
   display: flex;
   font-size: 1rem;
   font-weight: 400;
@@ -418,23 +419,21 @@ figure #vinyl #round #droppable img {
   display: none;
   color: #fbdbb5;
 }
-#content .inner .card .experiencePoint p {
+#content .inner .experiencePoint p {
   width: 94%;
   padding-left: 60px;
 }
-#content .inner .card .experiencePoint small {
+#content .inner .experiencePoint small {
   margin: 0 20px 0 15px;
 }
-#content .inner .card .experiencePoint.beclick {
-  display: flex;
-}
-#content #works .title {
+
+#works .title {
   padding-left: 5%;
 }
-#content #works .card {
+#works .card {
   width: 100%;
 }
-#content #works .card .worksItem {
+#works .card .worksItem {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -446,60 +445,65 @@ figure #vinyl #round #droppable img {
   margin-bottom: 20px;
   transition: 0.4s all ease-in-out;
 }
-#content #works .card .worksItem:hover {
+#works .card .worksItem:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
-#content #works .card article {
+#works .card article {
   width: 68%;
 }
-#content #works .card article h3 {
+#works .card article h3 {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: end;
 }
-#content #works .card article h3 small {
+#works .card article h3 small {
   font-size: 18px;
 }
-#content #works .card article p {
+#works .card article p {
   font-weight: 400;
 }
-#content #works .card img {
+#works .card img {
   width: 22%;
   height: fit-content;
   object-fit: contain;
   border-radius: 7px;
 }
-#content #contact {
+
+#contact {
   left: 6%;
 }
-#content #contact .card {
+#contact .card {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-#content #contact .card > div {
+#contact .card > div {
   padding: 20px;
 }
-#content #contact .card > div h3 {
+#contact .card > div h3 {
   margin-bottom: 15px;
 }
-#content #contact .card > div p {
+#contact .card > div p {
   font-size: 18px;
   font-weight: bolder;
   display: flex;
 }
-#content #contact .card > div a {
+#contact .card > div a {
   display: flex;
   align-items: center;
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 20px;
 }
-#content #about.inner,
-#content #works.inner,
-#content #contact.inner {
+#contact .card > div a:hover {
+  color: #FFE0A2;
+}
+
+#about.inner,
+#works.inner,
+#contact.inner {
   display: none;
 }
 

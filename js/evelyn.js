@@ -10,7 +10,13 @@ $(function () {
     let rotationId;
     // 用來控制旋轉的 interval
     let rotateInterval;
-
+    // 音樂來源
+    const audioSrc = {
+        'homeRecord': './tryAudio/snoozyBeats-lazyAfternoon.mp3',
+        'aboutRecord': './tryAudio/snoozyBeats-midnightDrifter.mp3',
+        'worksRecord': './tryAudio/snoozyBeats-doingGood.mp3',
+        'contactRecord': './tryAudio/snoozyBeats-rewind.mp3',
+    };
 
 
     // 以下11/29測試，重run邏輯
@@ -55,17 +61,8 @@ $(function () {
                 // 再延1秒後播放音樂
                 setTimeout(function () {
                     playAudio.play();
-                    if ($(playAudio).find('source').attr('src') == './tryAudio/snoozyBeats-lazyAfternoon.mp3') {
-                        // 顯示HOME內容+音樂來源
-                        $('#evelynHome h2').delay(800).fadeIn(1800, function () {
-                            $('#evelynHome p').fadeIn(2000, function () {
-                                $('#audioLicense').fadeIn(800);
-                            });
-                        });
-                    } else {
-                        $('#audioLicense').remove();
-                        $('#audioLicense2').delay(800).fadeIn(2500);
-                    }
+                    // 判斷並顯示content
+                    changeContent();
                 }, 1000);
             }, 2000);
         } else {
@@ -130,16 +127,18 @@ $(function () {
         }
 
         setTimeout(function () {
-            // pin 1.8s後歸位(回到7deg)
-            $('#pin').css({
-                'animation': 'pinReturn 1.8s ease-in-out forwards',
-            });
-            pinOut = true;
-            $('#pin').on('animationend', function () {
-                if ($(this).css('animation-name') == 'pinReturn') {
-                    $(this).css('animation', '');
-                }
-            });
+            if (angle != 7) {
+                // pin 1.8s後歸位(回到7deg)
+                $('#pin').css({
+                    'animation': 'pinReturn 1.8s ease-in-out forwards',
+                });
+                pinOut = true;
+                $('#pin').on('animationend', function () {
+                    if ($(this).css('animation-name') == 'pinReturn') {
+                        $(this).css('animation', '');
+                    }
+                });
+            };
         }, 1800);
     }
     // 獨立函示
@@ -151,29 +150,13 @@ $(function () {
         pinReturnAnimation();
         // 移除#pin的pause類別
         $('#pin').removeClass('pause');
-
-        // 淡出音樂license
-        $('#audioLicense').fadeOut(2500, function () {
-            $('#evelynHome p').fadeOut(2500, function () {
-                $('#evelynHome h2').fadeOut(2500)
-            });
-        });
-        $('#audioLicense2').fadeOut(2500);
+        // 音樂結束後呼叫audioEnd
+        playAudio.onended = audioEnd;
     };
-    // 音樂結束後呼叫audioEnd
-    playAudio.onended = audioEnd;
     // 以上11/29測試
 
 
-
     // 以下拖拉唱片(12/1 測試使用GSAP的拖放功能)
-    const audioSrc = {
-        'homeRecord': './tryAudio/snoozyBeats-lazyAfternoon.mp3',
-        'aboutRecord': './tryAudio/snoozyBeats-midnightDrifter.mp3',
-        'worksRecord': './tryAudio/snoozyBeats-doingGood.mp3',
-        'contactRecord': './tryAudio/snoozyBeats-rewind.mp3',
-    };
-
     Draggable.create(".draggable", {
         type: "x,y",
         onPress: function () {
@@ -194,9 +177,6 @@ $(function () {
                 draggableRect.right > dropzoneRect.left;
 
             if (insideZone) {
-                // 暫停pin動畫
-                $('#pin').css('animation', 'none');
-
                 // droppable裡面的唱片切換顯示
                 const isBlock = $('#droppable').find('.insideDroppable').filter(function () {
                     return $(this).css('display') == 'block';
@@ -207,7 +187,6 @@ $(function () {
                 $('.rotateImg').removeClass('rotateImg').css('transform', '');
                 const newRotateImg = $(`.insideDroppable.${draggable.id}`).children().last();
                 newRotateImg.addClass('rotateImg').css('transform', 'rotate(0deg) scale(0.95)');
-
                 // 重置旋轉角度
                 deg = 0;
                 if (rotateInterval) {
@@ -217,7 +196,6 @@ $(function () {
                     deg = (deg + 1) % 360;
                     $('.rotateImg').css('transform', `rotate(${deg}deg) scale(0.95)`);
                 }, 15);
-
                 // album的rotate切換
                 $('.album').css('rotate', '');
                 $(`.album.${draggable.id}`).css('rotate', '-5deg');
@@ -242,11 +220,13 @@ $(function () {
                 const audioNow = audioSrc[audioKey];
                 $('#playAudio source').attr('src', audioNow);
                 playAudio.load();
-
-                // 恢復pin動畫
-                setTimeout(function () {
-                    $('#pin').css('animation', '');
-                }, 2000);
+                // 淡出音樂content內容
+                $('#audioLicense').fadeOut(1800);
+                $('#audioLicense2').fadeOut(1800);
+                $('#evelynHome').fadeOut(2000);
+                $('.inner').fadeOut(2000, function () {
+                    $('#content').fadeOut(2500);
+                });
             } else {
                 gsap.to(draggable, {
                     zIndex: 0,
@@ -267,17 +247,53 @@ $(function () {
     });
     // 寫在draggable後面，避免我hover時候rotate失效
     $('.albumRecord.draggable').css('rotate', '');
-
     // 以上拖拉唱片(12/1 測試使用GSAP的拖放功能)
 
-
+    const changeContent = function () {
+        const whoPlay = $('.insideDroppable').filter(function () {
+            return $(this).css('display') == 'block';
+        });
+        switch (whoPlay.attr('data-msg')) {
+            case 'home':
+                $('#audioLicense').delay(500).fadeIn(2000, function () {
+                    $('#evelynHome h2').delay(300).fadeIn(1800, function () {
+                        $('#evelynHome p').fadeIn(2000);
+                    });
+                });
+                break;
+            case 'about':
+                $('#audioLicense2 span').text('《Midnight Drifter》');
+                $('#audioLicense2').delay(500).fadeIn(2000, function () {
+                    $('#content').delay(300).fadeIn(1800, function () {
+                        $('#about').fadeIn(1800);
+                    });
+                });
+                break;
+            case 'works':
+                $('#audioLicense2 span').text('《Doing Good》');
+                $('#audioLicense2').delay(500).fadeIn(2000, function () {
+                    $('#content').delay(300).fadeIn(1800, function () {
+                        $('#works').fadeIn(1800);
+                    });
+                });
+                break;
+            case 'contact':
+                $('#audioLicense2 span').text('《Rewind》');
+                $('#audioLicense2').delay(500).fadeIn(2000, function () {
+                    $('#content').delay(300).fadeIn(1800, function () {
+                        $('#contact').fadeIn(1800);
+                    });
+                });
+                break;
+        };
+    };
 
 
 
 
     // About Me content Experience點擊下展
     $('#about .card h4').click(function () {
-        $(this).next().toggleClass('beclick');
+        $(this).next().slideToggle(500);
     });
 
 
@@ -288,7 +304,7 @@ $(function () {
         // $('#center.moveback').css({
         //     'transform': 'rotate(0deg) translate3d(0%, 0%, 0)',
         // });
-        $('#center.moveCorner').removeClass('.moveCorner');
+        // $('#center.moveCorner').removeClass('.moveCorner');
 
     });
 
