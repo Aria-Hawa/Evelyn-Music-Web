@@ -12,10 +12,10 @@ $(function () {
     let rotateInterval;
     // 音樂來源
     const audioSrc = {
-        'homeRecord': './tryAudio/snoozyBeats-lazyAfternoon.mp3',
-        'aboutRecord': './tryAudio/snoozyBeats-midnightDrifter.mp3',
-        'worksRecord': './tryAudio/snoozyBeats-doingGood.mp3',
-        'contactRecord': './tryAudio/snoozyBeats-rewind.mp3',
+        'homeRecord': './audio/snoozyBeats-lazyAfternoon.mp3',
+        'aboutRecord': './audio/snoozyBeats-midnightDrifter.mp3',
+        'worksRecord': './audio/snoozyBeats-doingGood.mp3',
+        'contactRecord': './audio/snoozyBeats-rewind.mp3',
     };
 
 

@@ -4,7 +4,7 @@
 
 ---
 
-[![Evelyn](images/index.png)](https://aria-hawa.github.io/Evelyn-Music-Web/)
+[![Evelyn](images/show.gif)](https://aria-hawa.github.io/Evelyn-Music-Web/)
 
 
 > **Music on this webpage**
