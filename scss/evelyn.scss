@@ -1,8 +1,8 @@
 @use 'reset';
 @use 'variables' as *;
 @use 'function' as *;
-@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap'), url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap'), url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap'), url('https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap');
+;
 
 body {
     font-family: 'Goldman', sans-serif;
@@ -136,8 +136,8 @@ section {
         border-radius: 25px;
         background-color: #ededed;
         box-shadow: 109.95px 108.61px 42.91px rgba(40, 24, 11, .01), 69.72px 69.72px 40.23px rgba(40, 24, 11, .05), 40.23px 38.88px 33.52px rgba(40, 24, 11, .18), 17.43px 17.43px 24.14px rgba(40, 24, 11, .31), 4.02px 4.02px 13.41px rgba(40, 24, 11, .36);
-    
-        #round{
+
+        #round {
             position: absolute;
             width: 86%;
             aspect-ratio: 1/1;
@@ -199,40 +199,40 @@ section {
 #evelynHome {
     position: absolute;
     top: 10%;
-    // left: 20%;
     left: 31%;
     width: 50%;
     color: map-get($recordColor, lightgray);
+    font-family: "Oooh Baby", serif;
 
     h2 {
-        font-size: 60px;
+        font-size: 5vw;
         margin-bottom: 20px;
         display: none;
-        width: 582px;
+        width: fit-content;
     }
 
     p {
-        font-size: 28px;
+        font-size: 2.6vw;
         display: none;
         padding-left: 60px;
     }
 }
 
 #menuList {
-    width: 160px;
+    width: fit-content;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     li {
-        height: 130px;
+        height: 22vh;
         width: 100%;
         margin: $interval-xxl 0;
 
         .album {
-            width: 100%;
             height: 100%;
+            aspect-ratio: 1.28/1;
             position: relative;
             transition: .6s rotate ease-in-out;
 
@@ -296,7 +296,7 @@ section {
 
             .albumBasic {
                 top: 0;
-                right: calc(0% + 122px);
+                right: calc(0% + 20.6vh);
                 pointer-events: none;
             }
         }
@@ -356,7 +356,7 @@ section {
             }
 
             h3 {
-                width: 78%;
+                width: 92%;
                 padding-bottom: $interval-s;
                 font-size: 26px;
                 border-bottom: 2px solid map-get($recordColor, lightgray);

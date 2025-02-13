@@ -28,15 +28,15 @@ $(function () {
                 $('#center').addClass('moveCorner');
                 if ($(window).width() <= 1280) {
                     $('#center.moveCorner').css({
-                        'transform': 'rotate(29deg) translate3d(-60%, 50%, 0)',
+                        'transform': 'rotate(30deg) translate3d(-66%, 50%, 0)',
                     });
                 } if ($(window).width() <= 820) {
                     $('#center.moveCorner').css({
-                        'transform': 'rotate(29deg) translate3d(-61%, 40%, 0)',
+                        'transform': 'rotate(30deg) translate3d(-61%, 40%, 0)',
                     });
                 } if ($(window).width() > 1280) {
                     $('#center.moveCorner').css({
-                        'transform': 'rotate(29deg) translate3d(-60%, 50%, 0)',
+                        'transform': 'rotate(30deg) translate3d(-66%, 50%, 0)',
                         'transition': '2s 1.5s all ease-in-out',
                     });
                 }
