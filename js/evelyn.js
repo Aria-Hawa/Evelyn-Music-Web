@@ -28,15 +28,15 @@ $(function () {
                 $('#center').addClass('moveCorner');
                 if ($(window).width() <= 1280) {
                     $('#center.moveCorner').css({
-                        'transform': 'rotate(42deg) translate3d(-41%, 80%, 0)',
+                        'transform': 'rotate(29deg) translate3d(-60%, 50%, 0)',
                     });
                 } if ($(window).width() <= 820) {
                     $('#center.moveCorner').css({
-                        'transform': 'rotate(42deg) translate3d(-61%, 40%, 0)',
+                        'transform': 'rotate(29deg) translate3d(-61%, 40%, 0)',
                     });
                 } if ($(window).width() > 1280) {
                     $('#center.moveCorner').css({
-                        'transform': 'rotate(42deg) translate3d(-41%, 63%, 0)',
+                        'transform': 'rotate(29deg) translate3d(-60%, 50%, 0)',
                         'transition': '2s 1.5s all ease-in-out',
                     });
                 }
@@ -141,6 +141,7 @@ $(function () {
             };
         }, 1800);
     }
+
     // 獨立函示
     function audioEnd() {
         // 停止旋轉
@@ -151,8 +152,8 @@ $(function () {
         // 移除#pin的pause類別
         $('#pin').removeClass('pause');
         // 音樂結束後呼叫audioEnd
-        playAudio.onended = audioEnd;
     };
+    playAudio.onended = audioEnd;
     // 以上11/29測試
 
 
@@ -168,8 +169,8 @@ $(function () {
         onDragEnd: function () {
             const draggable = this.target;
             const dropzone = document.querySelector("#droppable");
-            const draggableRect = draggable.getBoundingClientRect();
-            const dropzoneRect = dropzone.getBoundingClientRect();
+            const draggableRect = draggable.getBoundingClientRect();        //取得draggable相對於視窗的位置
+            const dropzoneRect = dropzone.getBoundingClientRect();          //取得dropzone相對於視窗的位置
             const insideZone =
                 draggableRect.top < dropzoneRect.bottom &&
                 draggableRect.bottom > dropzoneRect.top &&
@@ -178,14 +179,14 @@ $(function () {
 
             if (insideZone) {
                 // droppable裡面的唱片切換顯示
-                const isBlock = $('#droppable').find('.insideDroppable').filter(function () {
+                const isBlock = $('#droppable').siblings('.needRotate').filter(function () {
                     return $(this).css('display') == 'block';
                 });
                 $(isBlock).css('display', 'none');
-                $(`.insideDroppable.${draggable.id}`).css('display', 'block');
+                $(`.needRotate.${draggable.id}`).css('display', 'block');
                 // 目前display:block的唱片要設定是rotateImg
                 $('.rotateImg').removeClass('rotateImg').css('transform', '');
-                const newRotateImg = $(`.insideDroppable.${draggable.id}`).children().last();
+                const newRotateImg = $(`.needRotate.${draggable.id}`);
                 newRotateImg.addClass('rotateImg').css('transform', 'rotate(0deg) scale(0.95)');
                 // 重置旋轉角度
                 deg = 0;
@@ -249,8 +250,9 @@ $(function () {
     $('.albumRecord.draggable').css('rotate', '');
     // 以上拖拉唱片(12/1 測試使用GSAP的拖放功能)
 
+    // 更換主要內容
     const changeContent = function () {
-        const whoPlay = $('.insideDroppable').filter(function () {
+        const whoPlay = $('.needRotate').filter(function () {
             return $(this).css('display') == 'block';
         });
         switch (whoPlay.attr('data-msg')) {
@@ -289,8 +291,6 @@ $(function () {
     };
 
 
-
-
     // About Me content Experience點擊下展
     $('#about .card h4').click(function () {
         $(this).next().slideToggle(500);
@@ -300,11 +300,8 @@ $(function () {
 
     // 點擊HOME回歸原位
     $('header').click(function () {
-        // $('#center').addClass('moveback');
-        // $('#center.moveback').css({
-        //     'transform': 'rotate(0deg) translate3d(0%, 0%, 0)',
-        // });
-        // $('#center.moveCorner').removeClass('.moveCorner');
+        // playAudio.load();
+        // audioEnd();
 
     });
 

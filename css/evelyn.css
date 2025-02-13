@@ -73,6 +73,7 @@ section header {
   width: 150px;
   top: 20px;
   left: 20px;
+  z-index: 999;
   display: none;
 }
 section audio {
@@ -128,6 +129,11 @@ section #audioLicense2:hover {
   aspect-ratio: 1/0.96;
   bottom: 3%;
   left: 24%;
+  transform: rotate(0deg) translate3d(0%, 0%, 0px);
+  transition: transform 2s ease-in-out 1.5s;
+}
+#center:hover {
+  cursor: pointer;
 }
 #center h1 {
   width: 100%;
@@ -178,7 +184,7 @@ section #audioLicense2:hover {
 #center #recordPlayer #round .background {
   transform: scale(0.95);
 }
-#center #recordPlayer #round .rotateImg {
+#center #recordPlayer #round .needRotate {
   transform: scale(0.95);
 }
 #center #recordPlayer #pinset {
@@ -192,7 +198,15 @@ section #audioLicense2:hover {
   width: 100%;
   height: 100%;
   transform-origin: 78% 86%;
-  rotate: 7deg;
+  transform: rotate(7deg);
+  transition: transform 0.8s, height 1.2s 0.8s;
+}
+#center #recordPlayer #pinset #pin.beClick {
+  height: 93%;
+  transform: rotate(0deg);
+}
+#center #recordPlayer #pinset #pin.pause {
+  height: 100%;
 }
 #center #recordPlayer #pinset #pinSeat {
   width: 100%;
@@ -291,24 +305,6 @@ section #audioLicense2:hover {
   top: 0;
   right: calc(0% + 122px);
   pointer-events: none;
-}
-
-#droppable .insideDroppable {
-  width: 100%;
-  height: 100%;
-}
-#droppable .insideDroppable img {
-  position: absolute;
-  transform: scale(0.95);
-}
-#droppable .aboutRecord.insideDroppable {
-  display: none;
-}
-#droppable .worksRecord.insideDroppable {
-  display: none;
-}
-#droppable .contactRecord.insideDroppable {
-  display: none;
 }
 
 #content {
