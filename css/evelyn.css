@@ -123,109 +123,83 @@ section #audioLicense2:hover {
 }
 
 #center {
-  transition: 2s 1.5s all ease-in-out;
-  transform: rotate(0deg) translate3d(0%, 0%, 0);
-}
-
-figure {
-  width: 40%;
-  height: 84vh;
-  left: 30%;
-  bottom: 3%;
   position: absolute;
+  width: 40vw;
+  aspect-ratio: 1/0.96;
+  bottom: 3%;
+  left: 24%;
 }
-figure > div {
+#center h1 {
   width: 100%;
-  height: 100%;
-}
-figure #recordPlayer {
-  padding-top: 20%;
-  width: fit-content;
-  height: 100%;
-}
-figure #recordPlayer #player {
-  position: relative;
-  height: 100%;
-  aspect-ratio: 1/1;
-  border-radius: 25px;
-  background-color: #EDEDED;
-  box-shadow: 109.95px 108.61px 42.91px rgba(40, 24, 11, 0.01), 69.72px 69.72px 40.23px rgba(40, 24, 11, 0.05), 40.23px 38.88px 33.52px rgba(40, 24, 11, 0.18), 17.43px 17.43px 24.14px rgba(40, 24, 11, 0.31), 4.02px 4.02px 13.41px rgba(40, 24, 11, 0.36);
-}
-figure #recordPlayer #player h1 {
-  line-height: 0.7;
+  padding-left: 6vw;
+  text-align: center;
+  line-height: 1;
   font-size: 8vw;
   color: #EAE8FA;
   position: absolute;
-  top: calc(0% - 16vh);
-  left: calc(50% - 14vw);
+  top: 0;
+  right: 0;
 }
-figure #recordPlayer #player p {
+#center p {
+  width: calc(96% - 8vw);
+  text-align: center;
+  transform-origin: top left;
   rotate: -90deg;
   line-height: 1;
   font-size: 6vw;
   color: #E9E9E9;
   position: absolute;
-  top: calc(50% - 6.8vh);
-  left: calc(0% - 15vw);
+  top: 100%;
+  left: 0;
 }
-figure #recordPlayer #player #pin {
+#center #recordPlayer {
+  width: calc(98% - 6vw);
+  height: calc(98% - 8vw);
   position: absolute;
-  z-index: 9;
-  width: fit-content;
-  height: 86%;
-  top: 13%;
-  right: 5%;
-  transform-origin: 98% 98%;
-  transform: rotate(7deg);
-  transition: 0.8s transform ease, 1.2s height ease 0.8s;
-}
-figure #recordPlayer #player #pin:hover {
-  cursor: pointer;
-}
-figure #recordPlayer #player #pin.beClick {
-  height: 74%;
-  transform: rotate(0deg);
-}
-figure #recordPlayer #player #pin.pause {
-  height: 86%;
-}
-figure #recordPlayer #player #pinSeat {
-  position: absolute;
-  z-index: 10;
-  width: 25%;
-  height: fit-content;
-  bottom: -6%;
-  right: -6%;
-}
-figure #vinyl {
-  position: absolute;
-  width: fit-content;
-  height: 72%;
-  top: 24.5%;
-  left: 2%;
-  z-index: 2;
-}
-figure #vinyl #round {
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  position: relative;
-}
-figure #vinyl #round img {
-  height: 100%;
+  bottom: 0;
+  right: 0;
   aspect-ratio: 1/1;
+  border-radius: 25px;
+  background-color: #ededed;
+  box-shadow: 109.95px 108.61px 42.91px rgba(40, 24, 11, 0.01), 69.72px 69.72px 40.23px rgba(40, 24, 11, 0.05), 40.23px 38.88px 33.52px rgba(40, 24, 11, 0.18), 17.43px 17.43px 24.14px rgba(40, 24, 11, 0.31), 4.02px 4.02px 13.41px rgba(40, 24, 11, 0.36);
 }
-figure #vinyl #round #droppable {
+#center #recordPlayer #round {
+  position: absolute;
+  width: 86%;
+  aspect-ratio: 1/1;
+  bottom: 1%;
+  left: 5%;
+}
+#center #recordPlayer #round img {
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
 }
-figure #vinyl #round #droppable img {
+#center #recordPlayer #round .background {
+  transform: scale(0.95);
+}
+#center #recordPlayer #round .rotateImg {
+  transform: scale(0.95);
+}
+#center #recordPlayer #pinset {
   position: absolute;
-  top: 0;
-  right: 0;
+  bottom: 0;
+  right: 5%;
+  height: 86%;
+  width: 25%;
+}
+#center #recordPlayer #pinset #pin {
+  width: 100%;
+  height: 100%;
+  transform-origin: 78% 86%;
+  rotate: 7deg;
+}
+#center #recordPlayer #pinset #pinSeat {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: -11%;
+  right: -48%;
 }
 
 #evelynHome {
@@ -507,177 +481,6 @@ figure #vinyl #round #droppable img {
   display: none;
 }
 
-@media screen and (max-height: 1024px) and (max-width: 1279px) {
-  figure {
-    height: 50vh;
-  }
-  figure #recordPlayer #player h1 {
-    top: calc(0% - 10vh);
-  }
-  figure #recordPlayer #player p {
-    top: calc(50% - 4.8vh);
-  }
-  #evelynHome {
-    top: 18%;
-    left: 10%;
-    width: 72%;
-  }
-  section #audioLicense {
-    left: 40%;
-    width: 55%;
-  }
-  section #audioLicense2 {
-    top: 24%;
-    left: 8%;
-  }
-  #content .inner {
-    top: 7%;
-    width: calc(90% - 174px);
-    height: 87vh;
-  }
-  #content .inner .card {
-    width: 100%;
-  }
-  #content #works .card .worksItem {
-    flex-direction: column;
-  }
-  #content #works .card img {
-    width: 58%;
-  }
-  #content #works .card article {
-    width: 100%;
-  }
-  #content #works .card article h3 {
-    flex-direction: column;
-    align-items: start;
-  }
-  #content #contact .card > div p {
-    word-wrap: break-word;
-    flex-direction: column;
-  }
-}
-@media screen and (min-width: 1366px) and (min-height: 1024px) and (max-width: 1366px) and (max-height: 1024px) {
-  figure {
-    height: 50vh;
-  }
-  figure #recordPlayer #player h1 {
-    top: calc(0% - 10vh);
-  }
-  figure #recordPlayer #player p {
-    top: calc(50% - 4.8vh);
-  }
-  #evelynHome {
-    top: 23%;
-    left: 10%;
-  }
-  section #audioLicense {
-    left: 40%;
-    width: 55%;
-  }
-  section #audioLicense2 {
-    top: 24%;
-    left: 8%;
-  }
-}
-@media screen and (min-width: 1024px) and (min-height: 1366px) and (max-width: 1024px) and (max-height: 1366px) {
-  figure {
-    height: 35vh;
-  }
-  figure #recordPlayer #player h1 {
-    font-size: 11vw;
-    top: -7vh;
-    left: calc(50% - 19vw);
-  }
-  figure #recordPlayer #player p {
-    font-size: 9vw;
-    top: calc(50% - 2.8vh);
-    left: calc(0% - 22vw);
-  }
-  section #audioLicense2 {
-    width: 33%;
-    left: 3%;
-  }
-  #content {
-    width: 63%;
-  }
-  #content .inner {
-    top: 9%;
-    left: 7%;
-    width: calc(90% - 148px);
-  }
-  #content .inner .card {
-    width: 100%;
-  }
-  #content #works .card .worksItem {
-    flex-direction: column;
-  }
-  #content #works .card img {
-    width: 58%;
-  }
-  #content #works .card article {
-    width: 100%;
-  }
-  #content #works .card article h3 {
-    flex-direction: column;
-    align-items: start;
-  }
-  #content #contact .card > div p {
-    word-wrap: break-word;
-    flex-direction: column;
-  }
-}
-@media (max-width: 1023px) {
-  figure {
-    height: 35vh;
-  }
-  figure #recordPlayer #player h1 {
-    font-size: 11vw;
-    top: -7vh;
-    left: calc(50% - 19vw);
-  }
-  figure #recordPlayer #player p {
-    font-size: 9vw;
-    top: calc(50% - 2.8vh);
-    left: calc(0% - 22vw);
-  }
-  section #audioLicense2 {
-    width: 33%;
-    left: 3%;
-  }
-  #content {
-    width: 63%;
-  }
-  #content .inner {
-    top: 9%;
-    left: 7%;
-    width: calc(90% - 148px);
-  }
-  #content .inner .card {
-    width: 100%;
-  }
-  #content #works .card .worksItem {
-    flex-direction: column;
-  }
-  #content #works .card img {
-    width: 58%;
-  }
-  #content #works .card article {
-    width: 100%;
-  }
-  #content #works .card article h3 {
-    flex-direction: column;
-    align-items: start;
-  }
-  #content #contact .card > div p {
-    word-wrap: break-word;
-    flex-direction: column;
-  }
-}
-@media (min-width: 1921px) {
-  #evelynHome {
-    color: red;
-  }
-}
 @keyframes rotatePin {
   from {
     transform: rotate(0deg);
